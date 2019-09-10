@@ -13,6 +13,7 @@ To run this project:
   );
   ```
 The setup should be complete. You can test the app by running the below curl commands.
+
 Add new true to size rating:
 ```bash
 curl -X POST \
