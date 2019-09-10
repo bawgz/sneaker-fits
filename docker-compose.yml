@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DB=db
+    ports:
+      - 5432:5432
+  app:
+    build: .
+    command: node server.js
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - PGUSER=postgres
+      - PGPASSWORD=pass
+      - PGHOST=db
+      - PGDATABASE=db
+      - PGPORT=5432
+      - NODE_ENV=production
